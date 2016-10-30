@@ -35,7 +35,7 @@ module.exports = function makeWebpackConfig(options) {
         config.entry = {}
     } else {
         config.entry = {
-            app: './src/app.module.js'
+            app: './src/app.js'
         }
     }
 
@@ -126,11 +126,11 @@ module.exports = function makeWebpackConfig(options) {
             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "url-loader?limit=10000&minetype=application/font-woff"
         },{
-          test: /\.json$/,
-          loader: 'json'
-        },{
             test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "file-loader"
+        },{
+            test: /\.json$/,
+            loader: "json"
         }]
     };
 

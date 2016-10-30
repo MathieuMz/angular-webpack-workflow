@@ -14,10 +14,13 @@
       <nav class="navbar navbar-default">
         <div class="collapse in navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="home">Home<span class="sr-only">(current)</span></a></li>
-            <li><a href="login">Sign In<span class="sr-only">(current)</span></a></li>
-            <li><a href="products">Products<span class="sr-only">(current)</span></a></li>
-            <li><a href="register">Register<span class="sr-only">(current)</span></a></li>
+            <li><a ui-sref="products">Products</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" >
+            <li ng-show="authService.getConnectedUser()"><a>Hello {{authService.getConnectedUser()}}</a></li>
+            <li ng-show="authService.getConnectedUser()"><a href='#' ng-click="authService.logOut()">Partir loin de ce monde</a></li>
+            <li ng-show="!authService.getConnectedUser()"><a ui-sref="register">Register</a></li>
+            <li ng-show="!authService.getConnectedUser()"><a ui-sref="login">Sign In</a></li>
           </ul>
         </div>
       </nav>
