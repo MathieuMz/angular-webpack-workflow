@@ -126,6 +126,9 @@ module.exports = function makeWebpackConfig(options) {
             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "url-loader?limit=10000&minetype=application/font-woff"
         },{
+          test: /\.json$/,
+          loader: 'json'
+        },{
             test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "file-loader"
         }]
@@ -214,17 +217,6 @@ module.exports = function makeWebpackConfig(options) {
             disable: !BUILD || TEST
         })
     ];
-
-	if (!TEST && !BUILD) {
-		config.eslint = {
-			parser: 'babel-eslint'
-		};
-		config.module.loaders.push({
-			test: /\.js$/,
-			exclude: /node_modules|bower_components|vendor/,
-			loaders: ['eslint']
-		});
-	}
 
     // Skip rendering index.html in test mode
     if (!TEST) {
